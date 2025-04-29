@@ -1,0 +1,67 @@
+//11:Positive-Negative
+
+import org.apache.spark.sql.SparkSession
+
+object PosNegCheck {
+  def main(args: Array[String]) {
+    val spark = SparkSession.builder.appName("PositiveNegative").master("local").getOrCreate()
+    val num = -5
+
+    if (num > 0)
+      println("Positive number")
+    else if (num < 0)
+      println("Negative number")
+    else
+      println("Zero")
+    
+    spark.stop()
+  }
+}
+
+
+//12:Calculator
+
+import org.apache.spark.sql.SparkSession
+
+object Calculator {
+  def main(args: Array[String]) {
+    val spark = SparkSession.builder.appName("Calculator").master("local").getOrCreate()
+
+    val a = 20
+    val b = 10
+
+    println("Addition: " + (a + b))
+    println("Subtraction: " + (a - b))
+    println("Multiplication: " + (a * b))
+    println("Division: " + (a / b))
+
+    spark.stop()
+  }
+}
+
+//13:Prime Number
+
+import org.apache.spark.sql.SparkSession
+
+object PrimeCheck {
+  def main(args: Array[String]) {
+    val spark = SparkSession.builder.appName("PrimeCheck").master("local").getOrCreate()
+
+    val num = 29
+    var isPrime = true
+
+    if (num <= 1) isPrime = false
+    else {
+      for (i <- 2 to num/2) {
+        if (num % i == 0) isPrime = false
+      }
+    }
+
+    if (isPrime)
+      println(num + " is a Prime Number")
+    else
+      println(num + " is NOT a Prime Number")
+
+    spark.stop()
+  }
+}
